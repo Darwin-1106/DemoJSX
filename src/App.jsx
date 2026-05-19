@@ -3,8 +3,18 @@ import "./App.css";
 import reactLogo from './assets/react.svg';
 
 function Header(){
-  const [followStatus, setFollowStatus] = useState('Following');
-  
+  const [followStatus, setFollowStatus] = useState('following');
+
+  const handleFollowClick = () => {
+    if (followStatus === 'following') {
+      setFollowStatus('follow');
+    } else if (followStatus === 'follow') {
+      setFollowStatus('unfollow');
+    }else {
+      setFollowStatus('following');
+    }
+  };
+
   return (
     <>
     <div className="profile-card">
@@ -22,6 +32,7 @@ function Header(){
     <div className="img-container">
       <img src={reactLogo} alt="Profile" style={{width: '100%', borderRadius: '12px'}} />
     </div>  
+    <button onClick={handleFollowClick}>{followStatus}</button>
     </div>
     </>
   );
